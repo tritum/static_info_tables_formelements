@@ -1,0 +1,7 @@
+plugin.tx_form {
+    settings {
+        yamlConfigurations {
+            1532099326 = EXT:static_info_tables_formelements/Configuration/Yaml/FormSetup.yaml
+        }
+    }
+}

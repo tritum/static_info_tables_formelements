@@ -1,0 +1,24 @@
+{
+    "name": "tritum/static-info-tables-formelements",
+    "description": "",
+    "type": "typo3-cms-extension",
+    "require": {
+        "typo3/cms": "~8.7",
+        "sjbr/static-info-tables": "~6.5"
+    },
+    "replace": {
+        "static_info_tables_formelements": "self.version"
+    },
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Ralf Zimemrmann TRITUM GmbH",
+            "email": "ralf.zimmermann@tritum.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "TRITUM\\StaticInfoTablesFormelements\\": "Classes/" 
+        }
+    }
+}

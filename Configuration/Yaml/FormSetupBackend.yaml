@@ -1,0 +1,37 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            StaticInfoTablesCountrySelect:
+              formEditor:
+                predefinedDefaults:
+                  properties:
+                    prependOptionLabel: 'formEditor.elements.StaticInfoTablesCountrySelect.predefinedDefaults.prependOptionLabel'
+                label: 'formEditor.elements.StaticInfoTablesCountrySelect.label'
+                groupSorting: 610
+                iconIdentifier: 't3-form-icon-staticinfotablesformelements-country'
+                editors:
+                  200:
+                    label: 'formEditor.elements.StaticInfoTablesCountrySelect.editor.label.label'
+                  300: null
+                  400:
+                    identifier: 'defaultValue'
+                    templateName: 'Inspector-StaticInfoTablesCountrySelectEditor'
+                    label: 'formEditor.elements.StaticInfoTablesCountrySelect.editor.defaultValue.label'
+                    propertyPath: 'defaultValue'
+
+          formEditor:
+            translationFile:
+              10: 'EXT:form/Resources/Private/Language/Database.xlf'
+              20: 'EXT:static_info_tables_formelements/Resources/Private/Language/Database.xlf'
+            dynamicRequireJsModules:
+              additionalViewModelModules:
+                - 'TYPO3/CMS/StaticInfoTablesFormelements/Form/Backend/FormEditor/ViewModel'
+            formEditorFluidConfiguration:
+              partialRootPaths:
+                20: 'EXT:static_info_tables_formelements/Resources/Private/Backend/Partials/FormEditor/'
+            formEditorPartials:
+              FormElement-StaticInfoTablesCountrySelect: 'Stage/SelectTemplate'
+              Inspector-StaticInfoTablesCountrySelectEditor: 'Inspector/StaticInfoTablesCountrySelectEditor'

@@ -1,0 +1,13 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            StaticInfoTablesCountrySelect:
+              __inheritances:
+                10: 'TYPO3.CMS.Form.prototypes.standard.formElementsDefinition.SingleSelect'
+              renderingOptions:
+                templateName: SingleSelect
+              properties:
+                elementClassAttribute: 'static-info-tables-country-select'
