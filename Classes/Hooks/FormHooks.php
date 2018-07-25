@@ -39,7 +39,7 @@ class FormHooks
 
         $options = [];
         foreach ($countries as $country) {
-            $options[$country->getUid()] = $country->getOfficialNameLocal();
+            $options[$country->getShortNameEn()] = $country->getShortNameEn();
         }
         sort($options);
         $renderable->setProperty('options', $options);
