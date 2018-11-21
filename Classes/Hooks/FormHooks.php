@@ -39,7 +39,7 @@ class FormHooks
 
         $options = [];
         foreach ($countries as $country) {
-            $options[$country->getUid()] = $country->getOfficialNameLocal();
+            $options[$country->getIsoCodeA2()] = $country->getOfficialNameLocal();
         }
         uasort($options, 'strcoll');
         $renderable->setProperty('options', $options);

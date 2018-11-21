@@ -35,7 +35,7 @@ class StaticInfoTablesCountriesViewHelper extends SelectViewHelper
 
         $countries = $this->getObjectManager()->get(CountryRepository::class)->findAll();
         foreach ($countries as $country) {
-            $options[$country->getUid()] = $country->getOfficialNameLocal();
+            $options[$country->getIsoCodeA2()] = $country->getOfficialNameLocal();
         }
         uasort($options, 'strcoll');
 
