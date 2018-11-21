@@ -37,7 +37,7 @@ class StaticInfoTablesCountriesViewHelper extends SelectViewHelper
         foreach ($countries as $country) {
             $options[$country->getUid()] = $country->getOfficialNameLocal();
         }
-        sort($options);
+        uasort($options, 'strcoll');
 
         return $options;
     }
