@@ -40,7 +40,7 @@ class FormHooks
 
         $countries = $this->getObjectManager()->get(CountryRepository::class)->findAll();
 
-        if ($this->isLoadedLanguageVersion($iso2Key)) {
+        if ($langKey === 'en' || $this->isLoadedLanguageVersion($iso2Key)) {
             $getterMethodName = 'getShortName' . ucfirst($iso2Key);
         } else {
             $getterMethodName = 'getOfficialNameLocal';
