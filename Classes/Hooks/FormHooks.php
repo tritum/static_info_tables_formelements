@@ -37,6 +37,10 @@ class FormHooks
         }
 
         $iso2Key = $GLOBALS['TSFE']->lang;
+        
+        if (isset($languageOverride = $GLOBALS['TSFE']->config['config']['tx_staticinfotablesformelements.']['languageOverwrite'])) {
+            $iso2Key = $languageOverride;
+        }
 
         $countries = $this->getObjectManager()->get(CountryRepository::class)->findAll();
 
