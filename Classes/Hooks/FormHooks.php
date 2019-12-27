@@ -16,6 +16,7 @@ namespace TRITUM\StaticInfoTablesFormelements\Hooks;
  */
 
 use SJBR\StaticInfoTables\Domain\Repository\CountryRepository;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Form\Domain\Model\Renderable\RenderableInterface;
@@ -35,14 +36,38 @@ class FormHooks
             return;
         }
 
+        $iso2Key = $GLOBALS['TSFE']->lang;
+        
+        if (isset($GLOBALS['TSFE']->config['config']['tx_staticinfotablesformelements.']['languageOverwrite'])) {
+            $iso2Key = $GLOBALS['TSFE']->config['config']['tx_staticinfotablesformelements.']['languageOverwrite'];
+        }
+
         $countries = $this->getObjectManager()->get(CountryRepository::class)->findAll();
+
+        if ($iso2Key === 'en' || $this->isLoadedLanguageVersion($iso2Key)) {
+            $getterMethodName = 'getShortName' . ucfirst($iso2Key);
+        } else {
+            $getterMethodName = 'getOfficialNameLocal';
+        }
 
         $options = [];
         foreach ($countries as $country) {
-            $options[$country->getUid()] = $country->getOfficialNameLocal();
+            $options[$country->getIsoCodeA2()] = $country->{$getterMethodName}();
         }
-        sort($options);
+        uasort($options, 'strcoll');
         $renderable->setProperty('options', $options);
+    }
+
+    /**
+     * check if static_info_tables_LANGUAGE is loaded
+     *
+     * @param string $langKey
+     *
+     * @return boolean
+     */
+    protected function isLoadedLanguageVersion($langKey)
+    {
+        return ExtensionManagementUtility::isLoaded('static_info_tables_' . $langKey);
     }
 
     /**
